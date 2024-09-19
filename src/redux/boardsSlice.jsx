@@ -66,7 +66,8 @@ const boardsSlice = createSlice({
             const board = state.find((board) => board.isActive)
             const prevCol = board.columns.find((col, index) => index === prevColIndex)
             const task = prevCol.tasks.splice(taskIndex, 1)[0]
-            board.columns.find((col, index) => index === colIndex)
+            const newCol = board.columns.find((col, index) => index === colIndex)
+            newCol.tasks.push(task) // update
         },
         setSubTaskCompleted: (state, action) => {
             const payload = action.payload
